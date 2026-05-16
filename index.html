@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>تفاصيل بطاقة السائق — Logisti</title>
 <style>
-/* ---- عام ---- */
+/* عام */
 * { box-sizing: border-box; margin: 0; padding: 0; }
 body {
     font-family: "Tahoma", Arial, sans-serif;
@@ -13,7 +13,7 @@ body {
     padding-top: 70px;
 }
 
-/* --- الهيدر --- */
+/* الهيدر */
 .site-header {
     position: fixed;
     top: 0;
@@ -27,9 +27,7 @@ body {
     z-index: 1000;
     flex-wrap: wrap;
 }
-
 .site-header .logo img { height: 36px; }
-
 .site-header .nav-links {
     display: flex;
     gap: 18px;
@@ -38,7 +36,6 @@ body {
     flex: 1;
     text-align: center;
 }
-
 .site-header .nav-links a {
     text-decoration: none;
     color: #333;
@@ -46,29 +43,21 @@ body {
     font-weight: 500;
     font-size: 14px;
 }
-
 .site-header .nav-links a:hover { color: #00766c; }
-
 .site-header .header-icons {
     display: flex;
     gap: 12px;
     align-items: center;
 }
-
 .site-header .header-icons svg {
     width: 22px;
     height: 22px;
     fill: #333;
     cursor: pointer;
 }
+.site-header .lang-btn { font-weight: bold; cursor: pointer; color: #333; }
 
-.site-header .lang-btn {
-    font-weight: bold;
-    cursor: pointer;
-    color: #333;
-}
-
-/* --- عنوان البطاقة --- */
+/* عنوان البطاقة */
 .top-header {
     width: 95%;
     max-width: 650px;
@@ -79,7 +68,7 @@ body {
     font-weight: bold;
 }
 
-/* --- البطاقة --- */
+/* البطاقة */
 .main-container {
     background: #fff;
     width: 95%;
@@ -89,21 +78,14 @@ body {
     box-shadow: 0 4px 15px rgba(0,0,0,0.03);
     margin: 25px auto;
 }
-
 .section { margin-bottom: 35px; }
-.section-title {
-    font-size: 1.25rem;
-    font-weight: 600;
-    margin-bottom: 18px;
-    color: #1a1a1a;
-    text-align: right;
-}
+.section-title { font-size: 1.25rem; font-weight: 600; margin-bottom: 18px; color: #1a1a1a; text-align: right; }
 .info-group { margin-bottom: 18px; text-align: right; }
 .info-group .label { font-size: 13px; color: #8e949e; display: block; margin-bottom: 4px; }
 .info-group .value { font-size: 15px; font-weight: bold; color: #333; display: block; line-height: 1.6; }
 hr { border: none; border-top: 1px solid #ececec; margin: 20px 0; }
 
-/* --- مودال البحث وتسجيل الدخول --- */
+/* مودال البحث وتسجيل الدخول */
 .modal {
     display: none;
     position: fixed;
@@ -116,9 +98,7 @@ hr { border: none; border-top: 1px solid #ececec; margin: 20px 0; }
     opacity: 0;
     transition: opacity 0.3s ease;
 }
-
 .modal.show { display: block; opacity: 1; }
-
 .modal-content {
     background-color: #fff;
     margin: 100px auto;
@@ -130,9 +110,7 @@ hr { border: none; border-top: 1px solid #ececec; margin: 20px 0; }
     transform: translateY(-50px);
     transition: transform 0.3s ease;
 }
-
 .modal.show .modal-content { transform: translateY(0); }
-
 .modal-content input {
     width: 90%;
     padding: 8px;
@@ -140,7 +118,6 @@ hr { border: none; border-top: 1px solid #ececec; margin: 20px 0; }
     border-radius: 5px;
     border: 1px solid #ccc;
 }
-
 .modal-content button {
     background-color: #00766c;
     color: #fff;
@@ -149,10 +126,9 @@ hr { border: none; border-top: 1px solid #ececec; margin: 20px 0; }
     border-radius: 5px;
     cursor: pointer;
 }
-
 .close { float: right; font-size: 20px; cursor: pointer; }
 
-/* --- تجاوب الشاشات --- */
+/* تجاوب الشاشات */
 @media (max-width: 768px) {
     .site-header { flex-direction: column; align-items: flex-start; gap: 10px; padding: 10px; }
     .site-header .nav-links { justify-content: flex-start; gap: 8px; width: 100%; text-align: right; }
@@ -160,7 +136,7 @@ hr { border: none; border-top: 1px solid #ececec; margin: 20px 0; }
     .top-header { font-size: 15px; }
 }
 
-/* --- شاشة صغيرة جدًا: Hamburger مع أنيميشن --- */
+/* شاشة صغيرة جدًا: Hamburger + البطاقة الجوال */
 @media (max-width: 500px) {
     .hamburger {
         display: block;
@@ -198,48 +174,32 @@ hr { border: none; border-top: 1px solid #ececec; margin: 20px 0; }
         transform: translateY(-10px);
         transition: all 0.3s ease;
     }
-    .site-header .nav-links.show {
-        display: flex;
-        opacity: 1;
-        transform: translateY(0);
-    }
+    .site-header .nav-links.show { display: flex; opacity: 1; transform: translateY(0); }
 
-    /* تحسين البطاقة للجوال */
+    /* تحسين البطاقة للجوال كما في الصورة */
     .main-container {
         width: 95%;
         padding: 25px 20px;
         border-radius: 15px;
+        margin: 20px auto;
     }
-    .section-title { font-size: 1.2rem; margin-bottom: 15px; }
+    .section-title { font-size: 1.2rem; margin-bottom: 12px; }
     .info-group .label { font-size: 14px; }
     .info-group .value { font-size: 16px; }
-    hr { margin: 15px 0; }
+    hr { margin: 12px 0; }
 }
 </style>
 </head>
 <body>
 
 <header class="site-header">
-    <div class="logo">
-        <img src="https://i.postimg.cc/Y23QZMdq/logsity.png" alt="شعار لوجيستي">
-    </div>
-
-    <div class="hamburger" onclick="toggleMenu(this)">
-        <span></span>
-        <span></span>
-        <span></span>
-    </div>
-
+    <div class="logo"><img src="https://i.postimg.cc/Y23QZMdq/logsity.png" alt="شعار لوجيستي"></div>
+    <div class="hamburger" onclick="toggleMenu(this)"><span></span><span></span><span></span></div>
     <nav class="nav-links">
-        <a href="#">الرئيسية</a>
-        <a href="#">لوجستي</a>
-        <a href="#">الخدمات</a>
-        <a href="#">الخريطة الملاحية</a>
-        <a href="#">المراكز اللوجستية</a>
-        <a href="#">مجلس الشراكة اللوجستي</a>
-        <a href="#">دليل الناقلين المرخصين</a>
+        <a href="#">الرئيسية</a><a href="#">لوجستي</a><a href="#">الخدمات</a>
+        <a href="#">الخريطة الملاحية</a><a href="#">المراكز اللوجستية</a>
+        <a href="#">مجلس الشراكة اللوجستي</a><a href="#">دليل الناقلين المرخصين</a>
     </nav>
-
     <div class="header-icons">
         <svg class="icon-search" viewBox="0 0 512 512" onclick="openSearch()">
             <path d="M505 442.7L405.3 343c28.3-34.9 45.7-79 45.7-127C451 96.5 354.5 0 231 0S11 96.5 11 216s96.5 216 216 216c48 0 92.1-17.3 127-45.7l99.7 99.7c10 10 23.3 15 36.7 15s26.7-5 36.7-15c20-20 20-52.5 0-72.5zM231 368c-84.1 0-152-67.9-152-152S146.9 64 231 64s152 67.9 152 152-67.9 152-152 152z"/>
@@ -254,7 +214,6 @@ hr { border: none; border-top: 1px solid #ececec; margin: 20px 0; }
 <div class="top-header">تفاصيل بطاقة السائق</div>
 
 <div class="main-container">
-    <!-- بيانات البطاقة كاملة -->
     <div class="section">
         <div class="section-title">بيانات المنشأة/الفرد</div>
         <div class="info-group"><span class="label">الاسم</span><span class="value">شركة نصلك الأن</span></div>
@@ -303,13 +262,12 @@ hr { border: none; border-top: 1px solid #ececec; margin: 20px 0; }
 </div>
 
 <script>
-// Hamburger toggle مع الأنيميشن
+// Hamburger toggle
 function toggleMenu(el){
     const nav = document.querySelector(".site-header .nav-links");
     nav.classList.toggle("show");
     el.classList.toggle("open");
 }
-
 // المودالات
 function openSearch(){document.getElementById('search-modal').classList.add('show');}
 function closeSearch(){document.getElementById('search-modal').classList.remove('show');}
@@ -319,11 +277,9 @@ window.onclick = function(event){
     if(event.target.id==='search-modal') closeSearch();
     if(event.target.id==='login-modal') closeLogin();
 }
-
-// زر اللغة: ترجمة كل شيء
+// زر اللغة
 const langBtn = document.querySelector(".lang-btn");
 let currentLang = "ar";
-
 const arabicTexts = {
     topHeader: "تفاصيل بطاقة السائق",
     sectionTitles: ["بيانات المنشأة/الفرد","معلومات الترخيص الرئيسي","بطاقة السائق"],
@@ -334,7 +290,6 @@ const arabicTexts = {
              "1447/05/11","1450/06/15","38.00024369","2606464762","محمد","بقنينه","2026-02-28","2026-05-29","نشاط النقل الخفيف للبضائع لأغراض تجارية (للغير - منشآت)"],
     navLinks: ["الرئيسية","لوجستي","الخدمات","الخريطة الملاحية","المراكز اللوجستية","مجلس الشراكة اللوجستي","دليل الناقلين المرخصين"]
 };
-
 const englishTexts = {
     topHeader: "Driver Card Details",
     sectionTitles: ["Company/Individual Info","Main License Info","Driver Card"],
@@ -345,7 +300,6 @@ const englishTexts = {
              "1447/05/11","1450/06/15","38.00024369","2606464762","Mohammed","Bqnina","2026-02-28","2026-05-29","Light Goods Transport for Commercial Purposes (Others - Company)"],
     navLinks: ["Home","Logisti","Services","Navigation Map","Logistic Centers","Logistic Partnership Council","Licensed Carriers Guide"]
 };
-
 langBtn.addEventListener("click",()=>{
     const navs = document.querySelectorAll(".site-header .nav-links a");
     if(currentLang==="ar"){
@@ -365,5 +319,6 @@ langBtn.addEventListener("click",()=>{
     }
 });
 </script>
+
 </body>
 </html>
