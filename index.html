@@ -152,7 +152,7 @@ hr { border: none; border-top: 1px solid #ececec; margin: 20px 0; }
 
 .close { float: right; font-size: 20px; cursor: pointer; }
 
-/* --- تجاوب الشاشات الصغيرة --- */
+/* --- تجاوب الشاشات --- */
 @media (max-width: 768px) {
     .site-header { flex-direction: column; align-items: flex-start; gap: 10px; padding: 10px; }
     .site-header .nav-links { justify-content: flex-start; gap: 8px; width: 100%; text-align: right; }
@@ -160,40 +160,60 @@ hr { border: none; border-top: 1px solid #ececec; margin: 20px 0; }
     .top-header { font-size: 15px; }
 }
 
-/* --- شاشة صغيرة جدًا: Hamburger --- */
+/* --- شاشة صغيرة جدًا: Hamburger مع أنيميشن --- */
 @media (max-width: 500px) {
-    .site-header { flex-wrap: nowrap; justify-content: space-between; }
+    .hamburger {
+        display: block;
+        cursor: pointer;
+        width: 25px;
+        height: 20px;
+        position: relative;
+    }
+    .hamburger span {
+        display: block;
+        height: 3px;
+        width: 100%;
+        background: #333;
+        margin: 4px 0;
+        border-radius: 2px;
+        transition: all 0.3s ease;
+    }
+    .hamburger.open span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+    .hamburger.open span:nth-child(2) { opacity: 0; }
+    .hamburger.open span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
+
     .site-header .nav-links {
         display: none;
         flex-direction: column;
         background: #fff;
         width: 100%;
+        max-height: 300px;
+        overflow-y: auto;
         padding: 10px 0;
         position: absolute;
         top: 60px;
         left: 0;
         border-top: 1px solid #ececec;
+        opacity: 0;
+        transform: translateY(-10px);
+        transition: all 0.3s ease;
     }
-    .site-header .nav-links.show { display: flex; }
-    .hamburger {
-        display: block;
-        cursor: pointer;
-        width: 25px;
-        height: 3px;
-        background: #333;
-        position: relative;
+    .site-header .nav-links.show {
+        display: flex;
+        opacity: 1;
+        transform: translateY(0);
     }
-    .hamburger::before, .hamburger::after {
-        content: "";
-        width: 25px;
-        height: 3px;
-        background: #333;
-        position: absolute;
-        left: 0;
-        transition: 0.3s;
+
+    /* تحسين البطاقة للجوال */
+    .main-container {
+        width: 95%;
+        padding: 25px 20px;
+        border-radius: 15px;
     }
-    .hamburger::before { top: -8px; }
-    .hamburger::after { top: 8px; }
+    .section-title { font-size: 1.2rem; margin-bottom: 15px; }
+    .info-group .label { font-size: 14px; }
+    .info-group .value { font-size: 16px; }
+    hr { margin: 15px 0; }
 }
 </style>
 </head>
@@ -204,7 +224,11 @@ hr { border: none; border-top: 1px solid #ececec; margin: 20px 0; }
         <img src="https://i.postimg.cc/Y23QZMdq/logsity.png" alt="شعار لوجيستي">
     </div>
 
-    <div class="hamburger" onclick="toggleMenu()"></div>
+    <div class="hamburger" onclick="toggleMenu(this)">
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
 
     <nav class="nav-links">
         <a href="#">الرئيسية</a>
@@ -230,6 +254,7 @@ hr { border: none; border-top: 1px solid #ececec; margin: 20px 0; }
 <div class="top-header">تفاصيل بطاقة السائق</div>
 
 <div class="main-container">
+    <!-- بيانات البطاقة كاملة -->
     <div class="section">
         <div class="section-title">بيانات المنشأة/الفرد</div>
         <div class="info-group"><span class="label">الاسم</span><span class="value">شركة نصلك الأن</span></div>
@@ -278,9 +303,11 @@ hr { border: none; border-top: 1px solid #ececec; margin: 20px 0; }
 </div>
 
 <script>
-// Hamburger toggle
-function toggleMenu(){
-    document.querySelector(".site-header .nav-links").classList.toggle("show");
+// Hamburger toggle مع الأنيميشن
+function toggleMenu(el){
+    const nav = document.querySelector(".site-header .nav-links");
+    nav.classList.toggle("show");
+    el.classList.toggle("open");
 }
 
 // المودالات
@@ -293,7 +320,7 @@ window.onclick = function(event){
     if(event.target.id==='login-modal') closeLogin();
 }
 
-// زر اللغة مع ترجمة كل شيء
+// زر اللغة: ترجمة كل شيء
 const langBtn = document.querySelector(".lang-btn");
 let currentLang = "ar";
 
@@ -338,6 +365,5 @@ langBtn.addEventListener("click",()=>{
     }
 });
 </script>
-
 </body>
 </html>
